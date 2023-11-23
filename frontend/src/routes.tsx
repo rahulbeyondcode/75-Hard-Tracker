@@ -1,59 +1,84 @@
 import { RouteObject } from "react-router-dom";
 
+import Onboarding from "./pages/Onboarding";
+import TrackerUI from "./pages/TrackerUI";
+
+// Challenge Trackers
+import About from "./components/challenge-tracker/About";
+import Account from "./components/challenge-tracker/Account";
+import Community from "./components/challenge-tracker/Community";
+import DailyTasks from "./components/challenge-tracker/DailyTasks";
+import Dashboard from "./components/challenge-tracker/Dashboard";
+import Gallery from "./components/challenge-tracker/Gallery";
+import Goals from "./components/challenge-tracker/Goals";
+import MyProgress from "./components/challenge-tracker/MyProgress";
+import Notifications from "./components/challenge-tracker/Notifications";
+
+// Onboarding
+import BMICalculator from "./components/onboarding/BMICalculator";
+import BodyMeasurementsCollector from "./components/onboarding/BodyMeasurementsCollector";
+import Register from "./components/onboarding/Register";
+
 const routes: RouteObject[] = [
   {
     path: "/onboarding",
-    element: <h1>Onboarding</h1>,
+    element: <Onboarding />,
     children: [
       {
         path: "/onboarding/register",
-        element: <h1>Onboarding Register</h1>,
+        element: <Register />,
       },
       {
         path: "/onboarding/bmi",
-        element: <h1>Onboarding BMI</h1>,
+        element: <BMICalculator />,
       },
       {
         path: "/onboarding/body-measurements",
-        element: <h1>Onboarding Body Measurements</h1>,
+        element: <BodyMeasurementsCollector />,
       },
     ],
   },
   {
-    path: "/dashboard",
-    element: <h1>Dashboard</h1>,
-  },
-  {
-    path: "/daily-tasks",
-    element: <h1>Daily-tasks</h1>,
-  },
-  {
-    path: "/my-progress",
-    element: <h1>My-progress</h1>,
-  },
-  {
-    path: "/gallery",
-    element: <h1>Gallery</h1>,
-  },
-  {
-    path: "/community",
-    element: <h1>Community</h1>,
-  },
-  {
-    path: "/goals",
-    element: <h1>Goals</h1>,
-  },
-  {
-    path: "/notifications",
-    element: <h1>Notifications</h1>,
-  },
-  {
-    path: "/account",
-    element: <h1>Account</h1>,
-  },
-  {
-    path: "/about",
-    element: <h1>About</h1>,
+    path: "/",
+    element: <TrackerUI />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/daily-tasks",
+        element: <DailyTasks />,
+      },
+      {
+        path: "/my-progress",
+        element: <MyProgress />,
+      },
+      {
+        path: "/gallery",
+        element: <Gallery />,
+      },
+      {
+        path: "/community",
+        element: <Community />,
+      },
+      {
+        path: "/goals",
+        element: <Goals />,
+      },
+      {
+        path: "/notifications",
+        element: <Notifications />,
+      },
+      {
+        path: "/account",
+        element: <Account />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+    ],
   },
 ];
 
