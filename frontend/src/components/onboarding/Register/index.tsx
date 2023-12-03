@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 const Register = () => {
+  const navigate = useNavigate();
+
   return (
     <div>
       <p>Hi, Welcome Onboard.</p>
@@ -26,7 +30,7 @@ const Register = () => {
         <input />
       </div>
 
-      <button>Submit</button>
+      <button onClick={() => navigate('/onboarding/bmi')}>Submit</button>
     </div>
   );
 };

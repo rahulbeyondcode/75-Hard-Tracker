@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+
 const BodyMeasurementsCollector = () => {
   return (
     <div>
+      <Link to="/onboarding/bmi">Go Back</Link>
       <p>Lastly let’s go through your body measurements (optional)</p>
 
       <div>
@@ -31,7 +34,9 @@ const BodyMeasurementsCollector = () => {
         <input />
       </div>
 
-      <button>Skip</button>
+      <Link to="/dashboard">
+        <button>Skip</button>
+      </Link>
       <button>Calculate</button>
     </div>
   );

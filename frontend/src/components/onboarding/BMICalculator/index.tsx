@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+
 const BMICalculator = () => {
   return (
     <div>
+      <Link to="/onboarding/register">Go Back</Link>
       <p>
         Before we start the challenge let’s check your{" "}
         <b>Body Mass Index (BMI)</b> (optional)
@@ -26,7 +29,9 @@ const BMICalculator = () => {
         <input />
       </div>
 
-      <button>Skip</button>
+      <Link to="/onboarding/body-measurements">
+        <button>Skip</button>
+      </Link>
       <button>Calculate</button>
     </div>
   );
