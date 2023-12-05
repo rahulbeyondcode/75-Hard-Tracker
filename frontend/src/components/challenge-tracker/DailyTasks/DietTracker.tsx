@@ -17,8 +17,7 @@ const DietTracker = () => {
 
   return (
     <div>
-      <p>DietTracker</p>
-
+      <p>Enter what you ate today (choose all that applies)</p>
       <Listbox value={dietFoods} onChange={setDietFoods} multiple>
         <Listbox.Button>
           {dietFoods.map((person) => person.name).join(", ")}
@@ -31,6 +30,26 @@ const DietTracker = () => {
           ))}
         </Listbox.Options>
       </Listbox>
+
+      <p>
+        Please specify what else did you eat? (comma separated if more than one)
+      </p>
+      <input />
+
+      <p>Did you consume alchohol?</p>
+      <input type="radio" name="alcohol" id="yes" />
+      <label htmlFor="yes">Yes</label>
+      <input type="radio" name="alcohol" id="no" />
+      <label htmlFor="no">No</label>
+
+      <p>Capture an image of your food (Optional)</p>
+      <button>Open Camera</button>
+      <button>Choose from Gallery</button>
+
+      <hr />
+
+      <button>Cancel</button>
+      <button>Save</button>
     </div>
   );
 };

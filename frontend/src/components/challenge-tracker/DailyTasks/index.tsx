@@ -9,7 +9,8 @@ import PictureTracker from "components/challenge-tracker/DailyTasks/PictureTrack
 const DailyTasks = () => {
   return (
     <div>
-      <h1>Daily Tasks Page</h1>
+      <h1>Your Today’s Progress</h1>
+      <progress value="32" max="100"> 32% </progress>
 
       <Disclosure>
         <Disclosure.Button className="py-2">
