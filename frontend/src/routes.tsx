@@ -4,15 +4,15 @@ import Onboarding from "./pages/Onboarding";
 import TrackerUI from "./pages/TrackerUI";
 
 // Challenge Trackers
-import About from "components/challenge-tracker/About";
-import Account from "components/challenge-tracker/Account";
-import Community from "components/challenge-tracker/Community";
-import DailyTasks from "components/challenge-tracker/DailyTasks";
-import Dashboard from "components/challenge-tracker/Dashboard";
-import Gallery from "components/challenge-tracker/Gallery";
-import Goals from "components/challenge-tracker/Goals";
-import MyProgress from "components/challenge-tracker/MyProgress";
-import Notifications from "components/challenge-tracker/Notifications";
+import About from "pages/TrackerUI/About";
+import Account from "pages/TrackerUI/Account";
+import Community from "pages/TrackerUI/Community";
+import DailyTasks from "pages/TrackerUI/DailyTasks";
+import Dashboard from "pages/TrackerUI/Dashboard";
+import Gallery from "pages/TrackerUI/Gallery";
+import Goals from "pages/TrackerUI/Goals";
+import MyProgress from "pages/TrackerUI/MyProgress";
+import Notifications from "pages/TrackerUI/Notifications";
 
 // Onboarding
 import BMICalculator from "components/onboarding/BMICalculator";
