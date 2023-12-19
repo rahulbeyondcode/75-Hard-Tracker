@@ -12,7 +12,7 @@ const foodList = [
   { id: 0, name: "Other" },
 ];
 
-const DietTracker = () => {
+function DietTracker() {
   const [dietFoods, setDietFoods] = useState([foodList[0], foodList[1]]);
 
   return (
@@ -37,21 +37,25 @@ const DietTracker = () => {
       <input />
 
       <p>Did you consume alchohol?</p>
-      <input type="radio" name="alcohol" id="yes" />
-      <label htmlFor="yes">Yes</label>
-      <input type="radio" name="alcohol" id="no" />
-      <label htmlFor="no">No</label>
+      <label htmlFor="yes">
+        <input type="radio" name="alcohol" id="yes" />
+        Yes
+      </label>
+      <label htmlFor="no">
+        <input type="radio" name="alcohol" id="no" />
+        No
+      </label>
 
       <p>Capture an image of your food (Optional)</p>
-      <button>Open Camera</button>
-      <button>Choose from Gallery</button>
+      <button type="button">Open Camera</button>
+      <button type="button">Choose from Gallery</button>
 
       <hr />
 
-      <button>Cancel</button>
-      <button>Save</button>
+      <button type="button">Cancel</button>
+      <button type="button">Save</button>
     </div>
   );
-};
+}
 
 export default DietTracker;

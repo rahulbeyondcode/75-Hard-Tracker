@@ -1,40 +1,51 @@
 import { Link } from "react-router-dom";
 
-const BMICalculator = () => {
+function BMICalculator() {
   return (
     <div>
       <Link to="/onboarding/register">Go Back</Link>
       <p>
-        Before we start the challenge let’s check your{" "}
-        <b>Body Mass Index (BMI)</b> (optional)
+        Before we start the challenge let’s check your
+        {" "}
+        <b>Body Mass Index (BMI)</b>
+        {" "}
+        (optional)
       </p>
 
       <div>
-        <label htmlFor="weight">Enter your weight (in kg)</label>
-        <input />
+        <label htmlFor="weight">
+          Enter your weight (in kg)
+          <input id="weight" />
+        </label>
       </div>
 
       <div>
-        <label htmlFor="height">Enter your height (in cm)</label>
-        <input />
+        <label htmlFor="height">
+          Enter your height (in cm)
+          <input id="height" />
+        </label>
       </div>
 
       <div>
-        <label htmlFor="dob">Enter your date of birth</label>
-        <input />
+        <label htmlFor="dob">
+          Enter your date of birth
+          <input id="dob" />
+        </label>
       </div>
 
       <div>
-        <label htmlFor="gender">Enter your gender</label>
-        <input />
+        <label htmlFor="gender">
+          Enter your gender
+          <input id="gender" />
+        </label>
       </div>
 
       <Link to="/onboarding/body-measurements">
-        <button>Skip</button>
+        <button type="button">Skip</button>
       </Link>
-      <button>Calculate</button>
+      <button type="button">Calculate</button>
     </div>
   );
-};
+}
 
 export default BMICalculator;

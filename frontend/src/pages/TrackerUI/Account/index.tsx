@@ -1,7 +1,7 @@
-const Account = () => {
+function Account() {
   return (
     <div>
-      <img src="img.jpg" alt="Profile Image" />
+      <img src="img.jpg" alt="Profile_Image" />
       <p>Name</p>
       <input type="text" />
       <p>Date of birth</p>
@@ -11,18 +11,18 @@ const Account = () => {
       <p>Gender</p>
       <input type="text" />
       <p>Profile picture</p>
-      <button>Upload Image</button>
+      <button type="button">Upload Image</button>
 
-      <button>Save</button>
+      <button type="button">Save</button>
 
       <h2>Delete account</h2>
       <p>
         Once you delete your account, all your data will be deleted. Please be
         certain
       </p>
-      <button>Delete your account</button>
+      <button type="button">Delete your account</button>
     </div>
   );
-};
+}
 
 export default Account;

@@ -1,4 +1,4 @@
-const About = () => {
+function About() {
   return (
     <div>
       <h2>About this application</h2>
@@ -10,7 +10,7 @@ const About = () => {
       <h2>What is the 75 Hard Challenge?</h2>
       <p>
         The 75 Hard challenge is a transformative mental and physical challenge
-        created by Andy Frisella. It's not just about fitness; it's a program
+        created by Andy Frisella. It&apos;s not just about fitness; it&apos;s a program
         that aims to develop mental toughness, grit, and discipline. The
         challenge involves:
       </p>
@@ -54,21 +54,23 @@ const About = () => {
       <p>
         At My 75 Hard Tracker, we are committed to assisting you throughout your
         75 Hard journey. We believe in the power of discipline, perseverance,
-        and community support. We're here to guide and empower you to push
+        and community support. We&apos;re here to guide and empower you to push
         beyond your limits and achieve success.
       </p>
       <p>Stay strong, stay disciplined, and conquer the 75 Hard challenge!</p>
 
       <p>Source code is available at Github</p>
-      <a href="https://madewithloveinindia.org" target="_blank">
-        Made with{" "}
+      <a href="https://madewithloveinindia.org" target="_blank" rel="noreferrer">
+        Made with
+        {" "}
         <span aria-label="Love" style={{ color: "#f43f5e" }}>
           &hearts;
-        </span>{" "}
+        </span>
+        {" "}
         in India
       </a>
     </div>
   );
-};
+}
 
 export default About;

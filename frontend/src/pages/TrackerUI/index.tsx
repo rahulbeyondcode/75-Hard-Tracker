@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 
-const TrackerUI = () => {
+function TrackerUI() {
   return (
     <div>
       <aside>
@@ -36,6 +36,6 @@ const TrackerUI = () => {
       <Outlet />
     </div>
   );
-};
+}
 
 export default TrackerUI;

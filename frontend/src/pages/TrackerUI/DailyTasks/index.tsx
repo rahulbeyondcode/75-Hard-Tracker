@@ -6,7 +6,7 @@ import WaterTracker from "components/challenge-tracker/DailyTasks/WaterTracker";
 import BookReadTracker from "components/challenge-tracker/DailyTasks/BookReadTracker";
 import PictureTracker from "components/challenge-tracker/DailyTasks/PictureTracker";
 
-const DailyTasks = () => {
+function DailyTasks() {
   return (
     <div>
       <h1>Your Today’s Progress</h1>
@@ -67,6 +67,6 @@ const DailyTasks = () => {
       </Disclosure>
     </div>
   );
-};
+}
 
 export default DailyTasks;

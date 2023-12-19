@@ -1,4 +1,4 @@
-const BookReadTracker = () => {
+function BookReadTracker() {
   return (
     <div>
       <p>Enter name of the book you are reading now</p>
@@ -13,10 +13,10 @@ const BookReadTracker = () => {
 
       <hr />
 
-      <button>Cancel</button>
-      <button>Save</button>
+      <button type="button">Cancel</button>
+      <button type="button">Save</button>
     </div>
   );
-};
+}
 
 export default BookReadTracker;
