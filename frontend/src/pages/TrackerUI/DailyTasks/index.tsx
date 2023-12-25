@@ -1,10 +1,10 @@
 import { Disclosure } from "@headlessui/react";
 
-import DietTracker from "components/challenge-tracker/DailyTasks/DietTracker";
-import WorkoutTracker from "components/challenge-tracker/DailyTasks/WorkoutTracker";
-import WaterTracker from "components/challenge-tracker/DailyTasks/WaterTracker";
-import BookReadTracker from "components/challenge-tracker/DailyTasks/BookReadTracker";
-import PictureTracker from "components/challenge-tracker/DailyTasks/PictureTracker";
+import DietTracker from "components/challenge-tracker/daily-tasks/DietTracker";
+import WorkoutTracker from "components/challenge-tracker/daily-tasks/WorkoutTracker";
+import WaterTracker from "components/challenge-tracker/daily-tasks/WaterTracker";
+import BookReadTracker from "components/challenge-tracker/daily-tasks/BookReadTracker";
+import PictureTracker from "components/challenge-tracker/daily-tasks/PictureTracker";
 
 function DailyTasks() {
   return (

@@ -9,7 +9,8 @@
     "paths": {
       "assets/*": ["./src/assets/*"],
       "components/*": ["./src/components/*"],
-      "pages/*": ["./src/pages/*"]
+      "pages/*": ["./src/pages/*"],
+      "sass/*": ["./src/sass/*"],
     }
   },
   "include": ["vite.config.ts"]

@@ -1,0 +1,9 @@
+.main-section {
+    background-color: var(--main-background);
+    border-radius: 4rem;
+    margin: 1rem;
+    padding: 4rem;
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: calc(100vh - 2rem);
+}
