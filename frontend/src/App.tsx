@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import routes from "./routes.tsx";
+import "sass/main.scss";
 
 const router = createBrowserRouter(routes);
 

@@ -13,6 +13,8 @@ export default defineConfig({
       assets: "/src/assets",
       components: "/src/components",
       pages: "/src/pages",
+      helpers: "/src/helpers",
+      sass: "/src/sass",
     },
   },
 });

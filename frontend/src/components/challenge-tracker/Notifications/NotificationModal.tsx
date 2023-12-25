@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 
-const NotificationModal = () => {
+import { generateRandomString } from "helpers/utils";
+
+function NotificationModal() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>Edit</button>
+      <button type="button" onClick={() => setIsOpen(true)}>
+        Edit
+      </button>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <Dialog.Panel>
           <Dialog.Title>Update water drinking notification</Dialog.Title>
@@ -31,15 +35,16 @@ const NotificationModal = () => {
               .map((_arrItem, index) => {
                 if (index > 0) {
                   return (
-                    <option value="">{index < 10 ? `0${index}` : index}</option>
-                  );
-                } else {
-                  return (
-                    <option value="" disabled>
-                      Select
+                    <option value="" key={generateRandomString()}>
+                      {index < 10 ? `0${index}` : index}
                     </option>
                   );
                 }
+                return (
+                  <option value="" key={generateRandomString()} disabled>
+                    Select
+                  </option>
+                );
               })}
           </select>
 
@@ -47,7 +52,7 @@ const NotificationModal = () => {
             {Array(13)
               .fill(undefined)
               .map((_arrItem, index) => (
-                <option value="">
+                <option value="" key={generateRandomString()}>
                   {index * 5 < 10 ? `0${index * 5}` : index * 5}
                 </option>
               ))}
@@ -57,11 +62,13 @@ const NotificationModal = () => {
             <option value="am">AM</option>
             <option value="pm">PM</option>
           </select>
-          <button onClick={() => setIsOpen(false)}>Update Preference</button>
+          <button type="button" onClick={() => setIsOpen(false)}>
+            Update Preference
+          </button>
         </Dialog.Panel>
       </Dialog>
     </>
   );
-};
+}
 
 export default NotificationModal;
