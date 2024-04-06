@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { Listbox } from "@headlessui/react";
+import InputField from "components/shared/InputField";
+import DropDown from "components/shared/DropDown";
+import Label from "components/shared/Label";
+import Button from "components/shared/Button";
 
 const foodList = [
   { id: 1, name: "Idli" },
@@ -13,28 +15,28 @@ const foodList = [
 ];
 
 function DietTracker() {
-  const [dietFoods, setDietFoods] = useState([foodList[0], foodList[1]]);
-
   return (
     <div>
-      <p>Enter what you ate today (choose all that applies)</p>
-      <Listbox value={dietFoods} onChange={setDietFoods} multiple>
-        <Listbox.Button>
-          {dietFoods.map((person) => person.name).join(", ")}
-        </Listbox.Button>
-        <Listbox.Options>
-          {foodList.map((person) => (
-            <Listbox.Option key={person.id} value={person}>
-              {person.name}
-            </Listbox.Option>
-          ))}
-        </Listbox.Options>
-      </Listbox>
+      <Label
+        text="Enter what you ate today (choose all that applies)"
+        htmlFor="food_today_dropdown"
+      />
+      <DropDown
+        id="food_today_dropdown"
+        // defaultSelectedIds={[3, 7]}
+        dropDownOptions={foodList}
+      />
 
-      <p>
-        Please specify what else did you eat? (comma separated if more than one)
-      </p>
-      <input />
+      <div className="my-5">
+        <Label
+          text="Please specify what else did you eat? (comma separated if more than one)"
+          htmlFor="other_food"
+        />
+        <InputField
+          id="other_food"
+          placeholder="eg: Chappathi, Rice"
+        />
+      </div>
 
       <p>Did you consume alchohol?</p>
       <label htmlFor="yes">
@@ -47,13 +49,13 @@ function DietTracker() {
       </label>
 
       <p>Capture an image of your food (Optional)</p>
-      <button type="button">Open Camera</button>
-      <button type="button">Choose from Gallery</button>
+      <Button type="button" variant="grey">Open Camera</Button>
+      <Button type="button" variant="grey">Choose from Gallery</Button>
 
       <hr />
 
-      <button type="button">Cancel</button>
-      <button type="button">Save</button>
+      <Button type="button" variant="secondary">Cancel</Button>
+      <Button variant="primary">Save</Button>
     </div>
   );
 }

@@ -34,6 +34,7 @@ module.exports = {
     semi: ["error", "always"],
     // suppress errors for missing 'import React' in files
     "react/react-in-jsx-scope": "off",
+    "implicit-arrow-linebreak": "off",
     // allow jsx syntax in js and ts files
     "react/jsx-filename-extension": [
       2,

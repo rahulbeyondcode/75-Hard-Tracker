@@ -1,5 +1,32 @@
 body {
-  font-family: "Loto", sans-serif;
+  font-family: 'Loto', sans-serif;
   font-weight: 400;
   line-height: 1.7;
+}
+
+aside {
+  .profile-details {
+    p {
+      font-size: 1.8rem;
+    }
+    div {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  }
+  .nav-item {
+    span {
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.accordion_button {
+  font-size: 1.6rem;
+}
+
+.label_text {
+  font-size: 1.4rem;
+  display: block;
 }

@@ -1,0 +1,16 @@
+.input_field {
+  background-color: var(--text-color-primary);
+  width: 25rem;
+  border: none;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 2px 2px 8px var(--box-shadow);
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+
+  &::placeholder {
+    font-size: 1.1rem;
+  }
+}

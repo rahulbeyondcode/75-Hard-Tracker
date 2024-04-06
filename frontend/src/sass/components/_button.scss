@@ -1,0 +1,20 @@
+button {
+  padding: 1rem 4rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+
+  &.grey {
+    color: var(--text-color-secondary);
+    background-color: var(--box-shadow);
+  }
+  &.primary {
+    color: var(--text-color-primary);
+    background-color: var(--secondary);
+  }
+  &.secondary {
+    color: var(--secondary);
+    background-color: var(--text-color-primary);
+    box-shadow: 2px 2px 8px var(--box-shadow);
+  }
+}
