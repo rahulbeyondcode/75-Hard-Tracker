@@ -7,16 +7,15 @@
     "skipLibCheck": true,
 
     "baseUrl": "./src",
-    // "baseUrl": ".",
     "paths": {
       "assets/*": ["./src/assets/*"],
       "components/*": ["./src/components/*"],
       "pages/*": ["./src/pages/*"],
-      "sass/*": ["./src/sass/*"],
+      "sass/*": ["./src/sass/*"]
     },
+
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -26,8 +25,11 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Additional Options */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"]
 }

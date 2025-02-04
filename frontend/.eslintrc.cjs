@@ -1,44 +1,36 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2021: true,
+    node: true,
   },
   extends: [
-    "airbnb",
-    "airbnb/hooks",
-    "plugin:import/typescript",
-    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
     "plugin:react/recommended",
-  ],
-  overrides: [
-    {
-      env: {
-        node: true,
-      },
-      files: [".eslintrc.{js,cjs}"],
-      parserOptions: {
-        sourceType: "script",
-      },
-    },
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended", // Make sure this is always the last item in the array
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint", "react"],
+  plugins: ["react", "@typescript-eslint", "prettier"],
   rules: {
-    indent: ["error", 2],
-    "linebreak-style": ["error", "unix"],
-    quotes: ["error", "double"],
-    semi: ["error", "always"],
-    // suppress errors for missing 'import React' in files
-    "react/react-in-jsx-scope": "off",
-    "implicit-arrow-linebreak": "off",
-    // allow jsx syntax in js and ts files
-    "react/jsx-filename-extension": [
-      2,
-      { extensions: [".js", ".jsx", ".ts", ".tsx"] },
-    ],
+    "prettier/prettier": "error",
+    "react/react-in-jsx-scope": "off", // Not needed in React 17+
+    "@typescript-eslint/explicit-module-boundary-types": "off", // Optional
+    "@typescript-eslint/no-unused-vars": "warn", // Warn on unused variables
+  },
+  settings: {
+    react: {
+      version: "detect", // Automatically detect the React version
+    },
   },
 };
