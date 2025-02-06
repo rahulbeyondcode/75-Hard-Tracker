@@ -5,11 +5,8 @@ function BMICalculator() {
     <div>
       <Link to="/onboarding/register">Go Back</Link>
       <p>
-        Before we start the challenge let’s check your
-        {" "}
-        <b>Body Mass Index (BMI)</b>
-        {" "}
-        (optional)
+        Before we start the challenge let&apos;s check your
+        <b> Body Mass Index (BMI)</b> (optional)
       </p>
 
       <div>

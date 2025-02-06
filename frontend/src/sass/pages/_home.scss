@@ -1,9 +1,35 @@
 .main-section {
-    background-color: var(--main-background);
-    border-radius: 4rem;
-    margin: 1rem;
-    padding: 4rem;
-    flex-grow: 1;
-    overflow-y: auto;
-    max-height: calc(100vh - 2rem);
+  background-color: var(--main-background);
+  border-radius: 4rem;
+  margin: 1rem;
+  padding: 4rem;
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: calc(100vh - 2rem);
+}
+
+.accordion-submit {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  column-gap: 3rem;
+  height: 5rem;
+  margin-top: 4rem;
+  border-top: 1px solid var(--box-shadow);
+
+  button {
+    padding: 1rem 7rem;
+  }
+}
+
+.radio-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  label {
+    width: fit-content;
+    margin: 0;
+    margin-right: 3rem;
+  }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import routes from "./routes.tsx";
+import routes from "./routes";
 import "sass/main.scss";
 
 const router = createBrowserRouter(routes);
@@ -18,7 +18,7 @@ function App() {
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 
 export default App;

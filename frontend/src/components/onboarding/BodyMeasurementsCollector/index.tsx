@@ -4,7 +4,7 @@ function BodyMeasurementsCollector() {
   return (
     <div>
       <Link to="/onboarding/bmi">Go Back</Link>
-      <p>Lastly let’s go through your body measurements (optional)</p>
+      <p>Lastly let&apos;s go through your body measurements (optional)</p>
 
       <div>
         <label htmlFor="hip">

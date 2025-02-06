@@ -1,17 +1,12 @@
 type PropsType = {
   text: string;
-  className: string;
-  htmlFor: string;
-  id: string;
+  htmlFor?: string;
+  className?: string;
+  id?: string;
 };
 
 function Label(props: PropsType) {
-  const {
-    className,
-    htmlFor,
-    id,
-    text,
-  } = props;
+  const { className, htmlFor, id, text } = props;
 
   return (
     <label

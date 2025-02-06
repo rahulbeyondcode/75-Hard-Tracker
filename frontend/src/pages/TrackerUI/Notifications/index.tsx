@@ -1,4 +1,4 @@
-import EditModalButton from "components/challenge-tracker/Notifications/NotificationModal";
+import EditModalButton from "components/challenge-tracker/notifications/NotificationModal";
 
 function Notifications() {
   return (

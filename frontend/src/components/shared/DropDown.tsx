@@ -1,7 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Listbox } from "@headlessui/react";
-
-import Label from "components/shared/Label";
 
 type PropTypes = {
   id: string;
@@ -12,7 +10,7 @@ type PropTypes = {
 const getFormattedList = (
   type: "selected" | "unselected",
   selectedIds: string[],
-  fullList: { id: string; name: string }[],
+  fullList: { id: string; name: string }[]
 ) =>
   fullList.filter((listItem) => {
     if (type === "selected") {
@@ -22,13 +20,13 @@ const getFormattedList = (
   });
 
 function DropDown(props: PropTypes) {
-  const { id, dropDownOptions, defaultSelectedIds } = props;
+  const { dropDownOptions, defaultSelectedIds } = props;
 
   const [selectedItems, setSelectedItems] = useState(
-    getFormattedList("selected", defaultSelectedIds, dropDownOptions) || [],
+    getFormattedList("selected", defaultSelectedIds!, dropDownOptions) || []
   );
   const [formattedDropdownOptions, setFormattedDropdownOptions] = useState(
-    getFormattedList("unselected", defaultSelectedIds, dropDownOptions) || [],
+    getFormattedList("unselected", defaultSelectedIds!, dropDownOptions) || []
   );
 
   const handleChange = (value: { id: string; name: string }[]) => {
@@ -36,7 +34,7 @@ function DropDown(props: PropTypes) {
     const selectedIds = value.map((item) => item.id);
 
     setFormattedDropdownOptions(
-      getFormattedList("unselected", selectedIds, dropDownOptions),
+      getFormattedList("unselected", selectedIds, dropDownOptions)
     );
   };
 
@@ -48,35 +46,38 @@ function DropDown(props: PropTypes) {
     setSelectedItems((prev) => prev.filter((item) => item.id !== deleteId));
 
     setFormattedDropdownOptions(
-      getFormattedList("unselected", selectedIds, dropDownOptions),
+      getFormattedList("unselected", selectedIds, dropDownOptions)
     );
   };
 
   return (
-    <>
-      <Listbox value={selectedItems} onChange={handleChange} multiple>
-        <Listbox.Button className="dropdown">
-          {selectedItems.map((option) => (
-            <span key={option.id} className="selected-tag">
-              {option.name}
-              <span
-                role="presentation"
-                onClick={(e) => handleRemoveSelectedItem(e, option.id)}
-              >
-                x
-              </span>
+    <Listbox value={selectedItems} onChange={handleChange} multiple>
+      <Listbox.Button className="dropdown">
+        {selectedItems.length === 0 ? (
+          <p className="placeholder">Choose any</p>
+        ) : (
+          ""
+        )}
+        {selectedItems.map((option) => (
+          <span key={option.id} className="selected-tag">
+            {option.name}
+            <span
+              role="presentation"
+              onClick={(e) => handleRemoveSelectedItem(e, option.id)}
+            >
+              x
             </span>
-          ))}
-        </Listbox.Button>
-        <Listbox.Options className="dropdown-options">
-          {formattedDropdownOptions.map((option) => (
-            <Listbox.Option key={option.id} value={option}>
-              {option.name}
-            </Listbox.Option>
-          ))}
-        </Listbox.Options>
-      </Listbox>
-    </>
+          </span>
+        ))}
+      </Listbox.Button>
+      <Listbox.Options className="dropdown-options">
+        {formattedDropdownOptions.map((option) => (
+          <Listbox.Option key={option.id} value={option}>
+            {option.name}
+          </Listbox.Option>
+        ))}
+      </Listbox.Options>
+    </Listbox>
   );
 }
 

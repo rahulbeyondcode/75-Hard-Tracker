@@ -1,41 +1,49 @@
-function TimerComponent() {
-  return (
-    <div>
-      <p>00h : 17m : 38s</p>
-      <button type="button">Play</button>
-      <button type="button">Pause</button>
-      <button type="button">Stop</button>
-    </div>
-  );
-}
+import InputField from "components/shared/InputField";
+import Label from "components/shared/Label";
+import Button from "components/shared/Button";
+
+import TimerComponent from "components/challenge-tracker/daily-tasks/TimerComponent";
 
 function WorkoutTracker() {
   return (
     <div>
-      <p>How would you prefer to track your workout?</p>
-      <label htmlFor="timer">
-        <input type="radio" name="alcohol" id="timer" />
-        Start a timer
-      </label>
+      <Label text="How would you prefer to track your workout?" />
 
-      <label htmlFor="manual">
-        <input type="radio" name="alcohol" id="manual" />
-        Enter workout timings manually
-      </label>
+      <div className="d-flex aic">
+        <div className="radio-wrapper">
+          <InputField
+            id="timer_auto"
+            value="timer_auto"
+            name="preferred_workout_tracker"
+            type="radio"
+          />
+          <Label htmlFor="timer_auto" text="Start a timer" />
+        </div>
 
-      <input type="text" />
-      <p>Hours</p>
-      <input type="text" />
-      <p>Minutes</p>
-      <input type="text" />
-      <p>Seconds</p>
+        <div className="radio-wrapper">
+          <InputField
+            id="timer_manual"
+            value="timer_manual"
+            name="preferred_workout_tracker"
+            type="radio"
+          />
+          <Label htmlFor="timer_manual" text="Enter workout timings manually" />
+        </div>
+      </div>
 
-      <TimerComponent />
+      <div className="mt-8">
+        {/* <TimeInput /> */}
+        <TimerComponent />
+      </div>
 
-      <hr />
-
-      <button type="button">Cancel</button>
-      <button type="button">Save</button>
+      <div className="accordion-submit">
+        <Button onClick={() => {}} type="button" variant="secondary">
+          Cancel
+        </Button>
+        <Button onClick={() => {}} variant="primary">
+          Save
+        </Button>
+      </div>
     </div>
   );
 }

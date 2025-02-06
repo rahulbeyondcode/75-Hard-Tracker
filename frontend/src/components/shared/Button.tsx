@@ -1,19 +1,16 @@
-/* eslint-disable react/button-has-type */
 import React from "react";
 
 type PropTypes = {
   children: React.ReactNode;
   id?: string;
   className?: string;
-  variant?: "primary" | "secondary" | "grey";
+  variant?: "primary" | "secondary" | "disabled" | "trigger";
   type?: "submit" | "button";
   onClick: () => void;
 };
 
 function Button(props: PropTypes) {
-  const {
-    id, className, variant, children, type, onClick,
-  } = props;
+  const { id, className, variant, children, type, onClick } = props;
 
   return (
     <button
@@ -30,7 +27,7 @@ function Button(props: PropTypes) {
 Button.defaultProps = {
   id: "",
   className: "",
-  variant: "primary",
+  variant: "trigger",
   type: "submit",
 };
 

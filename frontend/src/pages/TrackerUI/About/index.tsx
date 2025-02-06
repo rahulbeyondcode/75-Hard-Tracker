@@ -10,8 +10,8 @@ function About() {
       <h2>What is the 75 Hard Challenge?</h2>
       <p>
         The 75 Hard challenge is a transformative mental and physical challenge
-        created by Andy Frisella. It&apos;s not just about fitness; it&apos;s a program
-        that aims to develop mental toughness, grit, and discipline. The
+        created by Andy Frisella. It&apos;s not just about fitness; it&apos;s a
+        program that aims to develop mental toughness, grit, and discipline. The
         challenge involves:
       </p>
 
@@ -60,13 +60,15 @@ function About() {
       <p>Stay strong, stay disciplined, and conquer the 75 Hard challenge!</p>
 
       <p>Source code is available at Github</p>
-      <a href="https://madewithloveinindia.org" target="_blank" rel="noreferrer">
-        Made with
-        {" "}
+      <a
+        href="https://madewithloveinindia.org"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Made with{" "}
         <span aria-label="Love" style={{ color: "#f43f5e" }}>
           &hearts;
-        </span>
-        {" "}
+        </span>{" "}
         in India
       </a>
     </div>

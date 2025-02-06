@@ -38,8 +38,7 @@ function DailyTasks() {
       <h1>Your Today&apos;s Progress</h1>
       <progress value="32" max="100">
         {" "}
-        32%
-        {" "}
+        32%{" "}
       </progress>
       <br />
 
@@ -48,7 +47,7 @@ function DailyTasks() {
           key={accordion.title}
           title={accordion.title}
           body={accordion.body}
-          open={accordion.title === "Task: Follow a diet"}
+          open={accordion.title === "Task: Do 45 minutes OUTDOOR workout"}
         />
       ))}
     </div>

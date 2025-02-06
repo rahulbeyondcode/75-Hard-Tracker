@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import { Disclosure } from "@headlessui/react";
 
 type PropTypes = {
@@ -27,8 +27,9 @@ function Accordion(props: PropTypes) {
               <Disclosure.Panel className="text-gray-500 accordion-body" static>
                 {body}
               </Disclosure.Panel>
-
-            ) : ""}
+            ) : (
+              ""
+            )}
           </div>
         )}
       </Disclosure>

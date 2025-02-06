@@ -4,10 +4,6 @@ button {
   cursor: pointer;
   border-radius: 5px;
 
-  &.grey {
-    color: var(--text-color-secondary);
-    background-color: var(--box-shadow);
-  }
   &.primary {
     color: var(--text-color-primary);
     background-color: var(--secondary);
@@ -16,5 +12,25 @@ button {
     color: var(--secondary);
     background-color: var(--text-color-primary);
     box-shadow: 2px 2px 8px var(--box-shadow);
+  }
+  &.disabled {
+    color: var(--text-color-secondary);
+    background-color: var(--box-shadow);
+    cursor: not-allowed;
+    color: #888888;
+  }
+}
+
+
+.timer-wrapper {
+  display: flex;
+  column-gap: 3rem;
+
+  button {
+    width: 4.5rem;
+    height: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

@@ -1,16 +1,43 @@
 .input_field {
-  background-color: var(--text-color-primary);
-  width: 25rem;
-  border: none;
-  padding: 1rem;
-  border-radius: 5px;
-  box-shadow: 2px 2px 8px var(--box-shadow);
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  cursor: pointer;
+  &[type='radio'] {
+    margin-right: 1rem;
+  }
 
-  &::placeholder {
-    font-size: 1.1rem;
+  &[type='text'] {
+    background-color: var(--text-color-primary);
+    width: 30rem;
+    min-height: 2.5rem;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px var(--box-shadow);
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+
+    &::placeholder {
+      font-size: 1.2rem;
+      color: var(--box-shadow);
+    }
+  }
+}
+
+.time-input {
+  display: flex;
+  column-gap: 3rem;
+
+  .field-wrapper {
+    input {
+      width: 6.5rem;
+      height: 6.5rem;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+    p {
+      font-size: 1.4rem;
+      text-align: center;
+      margin-top: 5px;
+    }
   }
 }

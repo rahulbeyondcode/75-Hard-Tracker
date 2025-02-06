@@ -8,8 +8,7 @@ function Register() {
       <p>Hi, Welcome Onboard.</p>
       <p>
         Great to see you decided to try out the
-        {" "}
-        <b>75 hard challenge</b>
+        <b> 75 hard challenge</b>
       </p>
 
       <div>

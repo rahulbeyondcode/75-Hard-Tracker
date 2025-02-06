@@ -16,6 +16,8 @@ export default [
       ecmaVersion: "latest",
       sourceType: "module",
       globals: {
+        window: true,
+        document: true,
         browser: true,
         es2021: true,
         node: true,
