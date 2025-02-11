@@ -9,10 +9,28 @@ type PropTypes = {
 
 const Input = (props: PropTypes) => {
   const { type, className, id, name } = props;
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   return (
-    <input type={type} className={className} id={id} {...register(name)} />
+    <>
+      <input
+        type={type}
+        className={className}
+        id={id}
+        {...register(name, {
+          required: { value: true, message: "Required" },
+        })}
+      />
+
+      {errors?.root?.message ? (
+        <small className="block">{errors?.root?.message}</small>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
 
