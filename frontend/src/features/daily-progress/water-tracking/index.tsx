@@ -1,4 +1,4 @@
-function WaterTracker() {
+function WaterTracking() {
   return (
     <div>
       <p>How many cups of water did you drink? (considering 1 cup = 250ml)</p>
@@ -16,4 +16,4 @@ function WaterTracker() {
   );
 }
 
-export default WaterTracker;
+export default WaterTracking;

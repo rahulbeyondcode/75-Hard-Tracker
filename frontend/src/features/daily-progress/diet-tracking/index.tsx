@@ -14,7 +14,7 @@ const foodList = [
   { id: "0", name: "Other" },
 ];
 
-function DietTracker() {
+function DietTracking() {
   return (
     <div>
       <Label
@@ -88,4 +88,4 @@ function DietTracker() {
   );
 }
 
-export default DietTracker;
+export default DietTracking;

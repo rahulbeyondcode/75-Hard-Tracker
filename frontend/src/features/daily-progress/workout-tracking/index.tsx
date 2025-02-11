@@ -4,7 +4,7 @@ import Button from "components/shared/Button";
 
 import TimerComponent from "components/challenge-tracker/daily-tasks/TimerComponent";
 
-function WorkoutTracker() {
+function WorkoutTracking() {
   return (
     <div>
       <Label text="How would you prefer to track your workout?" />
@@ -48,4 +48,4 @@ function WorkoutTracker() {
   );
 }
 
-export default WorkoutTracker;
+export default WorkoutTracking;

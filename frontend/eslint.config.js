@@ -21,6 +21,7 @@ export default [
         browser: true,
         es2021: true,
         node: true,
+        console: true,
       },
     },
     plugins: {

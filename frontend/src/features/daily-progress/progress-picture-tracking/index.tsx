@@ -1,4 +1,4 @@
-function PictureTracker() {
+function ProgressPictureTracking() {
   return (
     <div>
       <p>Capture a progress image of yourself</p>
@@ -14,4 +14,4 @@ function PictureTracker() {
   );
 }
 
-export default PictureTracker;
+export default ProgressPictureTracking;
