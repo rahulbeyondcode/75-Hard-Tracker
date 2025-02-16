@@ -1,20 +1,14 @@
-import { z, ZodType } from "zod";
+import { z } from "zod";
 
-type FormType = {
-  book_name: string;
-  page_from: string;
-  page_to: string;
-};
-
-const schema: ZodType<FormType> = z.object({
-  book_name: z.string().min(1, { message: "Required" }),
-  page_from: z.string().min(1, { message: "Required" }),
-  page_to: z.string().min(1, { message: "Required" }),
+const schema = z.object({
+  book_name: z.string().min(1, { message: "Book name is required" }),
+  page_from: z.string().min(1, { message: "Enter start page" }),
+  page_to: z.string().min(1, { message: "Enter end page" }),
 });
 
-const defaultValues = {
-  book_name: "Sasi",
-  page_from: "5",
+const defaultValues: FormType = {
+  book_name: "",
+  page_from: "",
   page_to: "",
 };
 
@@ -22,5 +16,7 @@ const formData = {
   defaultValues,
   schema,
 };
+
+export type FormType = z.infer<typeof schema>;
 
 export default formData;

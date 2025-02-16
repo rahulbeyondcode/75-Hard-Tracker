@@ -3,8 +3,6 @@ import { Outlet } from "react-router-dom";
 // import Sidebar from "layout/Sidebar";
 
 const DailyProgress = () => {
-  console.log("---------------------------------------");
-  console.log("");
   return (
     <div className="d-flex">
       {/* <Sidebar /> */}

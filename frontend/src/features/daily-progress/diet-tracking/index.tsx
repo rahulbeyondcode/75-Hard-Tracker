@@ -1,7 +1,13 @@
-import InputField from "components/shared/InputField";
-import DropDown from "components/shared/DropDown";
-import Label from "components/shared/Label";
-import Button from "components/shared/Button";
+import { FormProvider, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import Button from "components/form-fields/Button";
+import DropDown from "components/form-fields/DropDown";
+import Input from "components/form-fields/Input";
+import Label from "components/form-fields/Label";
+import RadioButton from "components/form-fields/RadioButton";
+
+import formData, { FormType } from "./form-data";
 
 const foodList = [
   { id: "1", name: "Rice" },
@@ -15,76 +21,91 @@ const foodList = [
 ];
 
 function DietTracking() {
+  const { defaultValues, schema } = formData;
+
+  const methods = useForm<FormType>({
+    mode: "all",
+    defaultValues,
+    resolver: zodResolver(schema),
+  });
+
+  const { handleSubmit } = methods;
+
+  const onSubmit = (formData: FormType) => {
+    console.log("formData: ", formData);
+  };
+
   return (
-    <div>
-      <Label
-        text="Enter what you ate today (choose all that applies)"
-        htmlFor="food_today_dropdown"
-      />
-      <DropDown
-        id="food_today_dropdown"
-        // defaultSelectedIds={[3, 7]}
-        dropDownOptions={foodList}
-      />
-
-      <div className="mt-8">
+    <FormProvider {...methods}>
+      <div>
         <Label
-          text="Please specify what else did you eat? (comma separated if more than one)"
-          htmlFor="other_food"
+          text="Enter what you ate today (choose all that applies)"
+          htmlFor="food_today_dropdown"
         />
-        <InputField
-          id="other_food"
-          type="text"
-          placeholder="eg: Chapati, Rice"
+        <DropDown
+          id="food_today_dropdown"
+          name="food_today"
+          defaultSelectedIds={["3", "7"]}
+          dropDownOptions={foodList}
         />
-      </div>
 
-      <div className="mt-8">
-        <Label text="Did you consume alcohol?" htmlFor="other_food" />
+        <div className="mt-8">
+          <Label
+            text="Please specify what else did you eat? (comma separated if more than one)"
+            htmlFor="other_food"
+          />
+          <Input
+            name="other_food"
+            type="text"
+            placeholder="eg: Chapati, Rice"
+          />
+        </div>
 
-        <div className="d-flex">
-          <div className="radio-wrapper">
-            <InputField
-              id="alcohol_yes"
-              value="alcohol_yes"
-              name="alcohol"
-              type="radio"
-            />
-            <Label htmlFor="alcohol_yes" text="Yes" />
-          </div>
+        <div className="mt-8">
+          <Label text="Did you consume alcohol?" htmlFor="other_food" />
 
-          <div className="radio-wrapper">
-            <InputField
-              id="alcohol_no"
-              value="alcohol_no"
-              name="alcohol"
-              type="radio"
-            />
-            <Label htmlFor="alcohol_no" text="No" />
+          <div className="d-flex">
+            <div className="radio-wrapper">
+              <RadioButton
+                id="alcohol_yes"
+                value="alcohol_yes"
+                name="did_consume_alcohol"
+                label={<Label htmlFor="alcohol_yes" text="Yes" />}
+              />
+            </div>
+
+            <div className="radio-wrapper">
+              <RadioButton
+                id="alcohol_no"
+                value="alcohol_no"
+                name="did_consume_alcohol"
+                label={<Label htmlFor="alcohol_no" text="No" />}
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="mt-8">
-        <Label text="Capture an image of your food (Optional)" />
+        <div className="mt-8">
+          <Label text="Capture an image of your food (Optional)" />
 
-        <Button onClick={() => {}} type="button" className="mr-5">
-          Open Camera
-        </Button>
-        <Button onClick={() => {}} type="button">
-          Choose from Gallery
-        </Button>
-      </div>
+          <Button onClick={() => {}} type="button" className="mr-5">
+            Open Camera
+          </Button>
+          <Button onClick={() => {}} type="button">
+            Choose from Gallery
+          </Button>
+        </div>
 
-      <div className="accordion-submit">
-        <Button onClick={() => {}} type="button" variant="secondary">
-          Cancel
-        </Button>
-        <Button onClick={() => {}} variant="primary">
-          Save
-        </Button>
+        <div className="accordion-submit">
+          <Button onClick={() => {}} type="button" variant="secondary">
+            Cancel
+          </Button>
+          <Button onClick={handleSubmit(onSubmit)} variant="primary">
+            Save
+          </Button>
+        </div>
       </div>
-    </div>
+    </FormProvider>
   );
 }
 

@@ -1,39 +1,22 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import Input from "components/Input";
+import Input from "components/form-fields/Input";
 
-import formData from "./form-data";
-
-type FormType = {
-  book_name: string;
-  page_from: string;
-  page_to: string;
-};
+import formData, { FormType } from "./form-data";
 
 function BookReadTracking() {
   const { defaultValues, schema } = formData;
 
   const methods = useForm<FormType>({
+    mode: "all",
     defaultValues,
     resolver: zodResolver(schema),
   });
 
-  const {
-    handleSubmit,
-    formState,
-    formState: { errors },
-    watch,
-  } = methods;
+  const { handleSubmit } = methods;
 
-  console.log("formState: ", formState);
-  console.log("errors: ", errors);
-
-  console.log("watch (book_name): ", watch("book_name"));
-  console.log("watch (page_from): ", watch("page_from"));
-  console.log("watch (page_to): ", watch("page_to"));
-
-  const onSubmit = (formData: any) => {
+  const onSubmit = (formData: FormType) => {
     console.log("formData: ", formData);
   };
 
@@ -52,8 +35,10 @@ function BookReadTracking() {
 
         <hr />
 
-        <button type="button">Cancel</button>
-        <button onClick={() => handleSubmit(onSubmit)}>Save</button>
+        <button onClick={() => {}} type="button">
+          Cancel
+        </button>
+        <button onClick={handleSubmit(onSubmit)}>Save</button>
       </FormProvider>
     </div>
   );

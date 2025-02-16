@@ -35,7 +35,11 @@ export default [
       "prettier/prettier": "error", // Enable the prettier rule
       "react/react-in-jsx-scope": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
-      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_" },
+      ],
+      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     },
     settings: {
       react: {
