@@ -6,6 +6,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import prettierPlugin from "eslint-plugin-prettier";
 import prettierConfig from "eslint-config-prettier";
+import globals from "globals";
 
 export default [
   js.configs.recommended,
@@ -16,12 +17,9 @@ export default [
       ecmaVersion: "latest",
       sourceType: "module",
       globals: {
-        window: true,
-        document: true,
-        browser: true,
         es2021: true,
-        node: true,
-        console: true,
+        ...globals.node,
+        ...globals.browser,
       },
     },
     plugins: {
