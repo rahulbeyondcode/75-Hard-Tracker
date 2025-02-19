@@ -123,6 +123,8 @@ function Timer() {
   const handleStopClick = () => {
     setIsTimerRunning(false);
     setDidStopTimer(true);
+    localStorage.setItem(TIMER_START, "");
+    localStorage.setItem(TIMER_PAUSE, "");
   };
 
   const handleResetTimer = () => {
