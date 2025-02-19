@@ -6,9 +6,9 @@ const DailyProgress = () => {
   return (
     <div className="d-flex">
       {/* <Sidebar /> */}
-      <div className="main-section">
-        <Outlet />
-      </div>
+      {/* <div className="main-section"> */}
+      <Outlet />
+      {/* </div> */}
     </div>
   );
 };

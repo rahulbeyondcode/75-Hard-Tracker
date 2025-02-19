@@ -10,40 +10,24 @@ import StopIcon from "assets/StopIcon";
 
 import { DATE_FORMAT } from "helpers/constants";
 import { TimeStateType } from "./types";
+import Button from "components/form-fields/Button";
 
 dayjs.extend(customParseFormat);
 dayjs.extend(duration);
 
+const TIMER_START = "timer_start_time";
+const TIMER_PAUSE = "timer_pause_time";
+
 // Milliseconds to hours minutes seconds
 const msToHMS = (ms: number) => {
-  let totalHours = 0;
-  let totalMinutes = 0;
-  let totalSeconds = 0;
-
   const durationInHours = dayjs.duration(ms).hours();
-
-  const durationInMinutes = dayjs.duration(ms).minutes();
-
-  const durationInSeconds = dayjs.duration(ms).seconds();
-
-  totalHours = durationInHours;
-
-  if (durationInMinutes > 60) {
-    totalMinutes = durationInMinutes % 60;
-  } else {
-    totalMinutes = durationInMinutes;
-  }
-
-  if (durationInSeconds > 60) {
-    totalSeconds = durationInSeconds % 60;
-  } else {
-    totalSeconds = durationInSeconds;
-  }
+  const durationInMins = dayjs.duration(ms).minutes();
+  const durationInSecs = dayjs.duration(ms).seconds();
 
   return {
-    hh: totalHours < 10 ? `0${totalHours}` : String(totalHours),
-    mm: totalMinutes < 10 ? `0${totalMinutes}` : String(totalMinutes),
-    ss: totalSeconds < 10 ? `0${totalSeconds}` : String(totalSeconds),
+    hh: String(durationInHours).padStart(2, "0"),
+    mm: String(durationInMins).padStart(2, "0"),
+    ss: String(durationInSecs).padStart(2, "0"),
   };
 };
 
@@ -58,15 +42,16 @@ const getTimerValues = (startTime: string) => {
 let interval: number;
 
 function Timer() {
-  const timerPausedTime = useRef("");
+  const timerPauseTime = useRef("");
 
   const [timerstate, setTimerState] = useState({} as TimeStateType);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const [didStopTimer, setDidStopTimer] = useState(false);
 
   useEffect(() => {
     if (isTimerRunning) {
       interval = setInterval(() => {
-        const startDate = localStorage.getItem("timer_start_time")!;
+        const startDate = localStorage.getItem(TIMER_START)!;
 
         const { hh, mm, ss } = getTimerValues(startDate);
         setTimerState({ hh, mm, ss });
@@ -81,60 +66,50 @@ function Timer() {
   }, [isTimerRunning]);
 
   const handlePlayClick = () => {
-    if (timerPausedTime.current) {
-      // Resuming timer from a paused time
-      const pausedTime = dayjs(timerPausedTime.current, DATE_FORMAT);
+    // Resuming timer from a paused time
+    if (timerPauseTime.current) {
+      const timeOfTimerStart = dayjs(
+        localStorage.getItem(TIMER_START),
+        DATE_FORMAT
+      );
+      const timeOfTimerPause = dayjs(timerPauseTime.current, DATE_FORMAT);
       const now = dayjs();
 
-      // Find how much time the timer was paused in milliseconds and convert to hh:mm:ss
-      const diffInMilliseconds = now.diff(pausedTime);
-      const timePassedWhileInPause = msToHMS(diffInMilliseconds);
+      // Calculate how long the timer ran BEFORE it was paused (e.g., 12 seconds)
+      const elapsedTimeBeforePause = timeOfTimerPause.diff(timeOfTimerStart);
 
-      let modifiedResumeTime = dayjs();
+      // New start time = current time - elapsed time before pause
+      const newStartTime = now.subtract(elapsedTimeBeforePause, "ms");
 
-      if (Number(timePassedWhileInPause.hh) > 0) {
-        modifiedResumeTime = now.subtract(
-          Number(timePassedWhileInPause.hh),
-          "h"
-        );
-      }
-      if (Number(timePassedWhileInPause.mm) > 0) {
-        modifiedResumeTime = now.subtract(
-          Number(timePassedWhileInPause.mm),
-          "m"
-        );
-      }
-      if (Number(timePassedWhileInPause.ss) > 0) {
-        modifiedResumeTime = now.subtract(
-          Number(timePassedWhileInPause.ss),
-          "s"
-        );
-      }
-
-      localStorage.setItem(
-        "timer_start_time",
-        modifiedResumeTime.format(DATE_FORMAT)
-      );
-      timerPausedTime.current = "";
+      localStorage.setItem(TIMER_START, newStartTime.format(DATE_FORMAT));
+      timerPauseTime.current = "";
     } else {
       // Starting a fresh timer
-      const startTime = dayjs().format("DD-MM-YYYY hh:mm:ss A");
-      localStorage.setItem("timer_start_time", startTime);
+      const startTime = dayjs().format(DATE_FORMAT);
+      localStorage.setItem(TIMER_START, startTime);
     }
 
-    localStorage.setItem("timer_pause_time", "");
+    localStorage.setItem(TIMER_PAUSE, "");
     setIsTimerRunning(true);
   };
 
   const handlePauseClick = () => {
-    timerPausedTime.current = dayjs().format(DATE_FORMAT);
-    localStorage.setItem("timer_pause_time", timerPausedTime.current);
+    timerPauseTime.current = dayjs().format(DATE_FORMAT);
+    localStorage.setItem(TIMER_PAUSE, timerPauseTime.current);
 
     setIsTimerRunning(false);
   };
 
   const handleStopClick = () => {
     setIsTimerRunning(false);
+    setDidStopTimer(true);
+  };
+
+  const handleResetTimer = () => {
+    setTimerState({} as TimeStateType);
+    setDidStopTimer(false);
+    localStorage.setItem(TIMER_START, "");
+    localStorage.setItem(TIMER_PAUSE, "");
   };
 
   return (
@@ -146,21 +121,29 @@ function Timer() {
           {timerstate.ss ? `${timerstate.ss}s` : ""}
         </h1>
       ) : (
-        ""
+        "00h : 00m : 00s"
       )}
       <div className="timer-wrapper">
-        {isTimerRunning ? (
-          <div onClick={handlePauseClick}>
-            <PauseIcon />
-          </div>
+        {!didStopTimer ? (
+          isTimerRunning ? (
+            <div onClick={handlePauseClick}>
+              <PauseIcon />
+            </div>
+          ) : (
+            <div onClick={handlePlayClick}>
+              <PlayIcon />
+            </div>
+          )
         ) : (
-          <div onClick={handlePlayClick}>
-            <PlayIcon />
+          ""
+        )}
+        {didStopTimer ? (
+          <Button onClick={handleResetTimer}>Reset Timer</Button>
+        ) : (
+          <div onClick={handleStopClick}>
+            <StopIcon />
           </div>
         )}
-        <div onClick={handleStopClick}>
-          <StopIcon />
-        </div>
       </div>
     </>
   );

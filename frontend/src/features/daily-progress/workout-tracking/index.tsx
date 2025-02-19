@@ -26,7 +26,7 @@ function WorkoutTracking() {
   return (
     <div>
       <FormProvider {...methods}>
-        <Label text="How would you prefer to track your workout?" />
+        {/* <Label text="How would you prefer to track your workout?" />
 
         <div className="d-flex aic">
           <div className="radio-wrapper">
@@ -49,21 +49,21 @@ function WorkoutTracking() {
               text="Enter workout timings manually"
             />
           </div>
-        </div>
+        </div> */}
 
         <div className="mt-8">
           {/* <TimeInput /> */}
           <TimerComponent />
         </div>
 
-        <div className="accordion-submit">
+        {/* <div className="accordion-submit">
           <Button onClick={() => {}} type="button" variant="secondary">
             Cancel
           </Button>
           <Button onClick={handleSubmit(onSubmit)} variant="primary">
             Save
           </Button>
-        </div>
+        </div> */}
       </FormProvider>
     </div>
   );
