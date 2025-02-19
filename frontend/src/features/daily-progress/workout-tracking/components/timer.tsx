@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
@@ -42,11 +42,30 @@ const getTimerValues = (startTime: string) => {
 let interval: number;
 
 function Timer() {
-  const timerPauseTime = useRef("");
-
   const [timerstate, setTimerState] = useState({} as TimeStateType);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [didStopTimer, setDidStopTimer] = useState(false);
+
+  useEffect(() => {
+    const timerStartTime = localStorage.getItem(TIMER_START);
+    const timerPauseTime = localStorage.getItem(TIMER_PAUSE);
+
+    if (timerStartTime && !timerPauseTime) {
+      setIsTimerRunning(true);
+    } else if (timerStartTime && timerPauseTime) {
+      const startTime = dayjs(timerStartTime, DATE_FORMAT);
+      const pauseTime = dayjs(timerPauseTime, DATE_FORMAT);
+
+      const timeElapsedRunning = pauseTime.diff(startTime);
+
+      const newStartDate = dayjs()
+        .subtract(timeElapsedRunning, "milliseconds")
+        .format(DATE_FORMAT);
+
+      const { hh, mm, ss } = getTimerValues(newStartDate);
+      setTimerState({ hh, mm, ss });
+    }
+  }, []);
 
   useEffect(() => {
     if (isTimerRunning) {
@@ -67,12 +86,14 @@ function Timer() {
 
   const handlePlayClick = () => {
     // Resuming timer from a paused time
-    if (timerPauseTime.current) {
+    const timerPauseTime = localStorage.getItem(TIMER_PAUSE);
+
+    if (timerPauseTime) {
       const timeOfTimerStart = dayjs(
         localStorage.getItem(TIMER_START),
         DATE_FORMAT
       );
-      const timeOfTimerPause = dayjs(timerPauseTime.current, DATE_FORMAT);
+      const timeOfTimerPause = dayjs(timerPauseTime, DATE_FORMAT);
       const now = dayjs();
 
       // Calculate how long the timer ran BEFORE it was paused (e.g., 12 seconds)
@@ -82,7 +103,7 @@ function Timer() {
       const newStartTime = now.subtract(elapsedTimeBeforePause, "ms");
 
       localStorage.setItem(TIMER_START, newStartTime.format(DATE_FORMAT));
-      timerPauseTime.current = "";
+      localStorage.setItem(TIMER_PAUSE, "");
     } else {
       // Starting a fresh timer
       const startTime = dayjs().format(DATE_FORMAT);
@@ -94,8 +115,7 @@ function Timer() {
   };
 
   const handlePauseClick = () => {
-    timerPauseTime.current = dayjs().format(DATE_FORMAT);
-    localStorage.setItem(TIMER_PAUSE, timerPauseTime.current);
+    localStorage.setItem(TIMER_PAUSE, dayjs().format(DATE_FORMAT));
 
     setIsTimerRunning(false);
   };
