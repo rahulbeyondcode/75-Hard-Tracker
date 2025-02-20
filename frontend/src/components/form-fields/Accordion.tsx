@@ -1,5 +1,5 @@
 import React, { JSX } from "react";
-import { Disclosure } from "@headlessui/react";
+import { Disclosure, DisclosureButton } from "@headlessui/react";
 
 type PropTypes = {
   title: string;
@@ -15,14 +15,14 @@ function Accordion(props: PropTypes) {
       <Disclosure>
         {({ open: isOpen }) => (
           <div className="bg-white">
-            <Disclosure.Button className="py-2 accordion_button">
+            <DisclosureButton className="py-2 accordion_button">
               {title}
               {open || isOpen ? (
                 <i className="fa-solid fa-chevron-down" />
               ) : (
                 <i className="fa-solid fa-chevron-right" />
               )}
-            </Disclosure.Button>
+            </DisclosureButton>
             {open || isOpen ? (
               <Disclosure.Panel className="text-gray-500 accordion-body" static>
                 {body}
