@@ -5,7 +5,7 @@ function Dashboard() {
   const dbRef = useRef<IDBDatabase | null>(null);
 
   useEffect(() => {
-    const dbOpenRequest = indexedDB.open("75_hard_tracker_db", 1);
+    const dbOpenRequest = indexedDB.open("75_hard_tracker_db", 6);
 
     dbOpenRequest.onerror = () => {
       console.log("Error");
@@ -23,10 +23,14 @@ function Dashboard() {
 
       console.log(`DB upgraded from v${oldVersion} to v${newVersion}`);
 
-      if (!db.objectStoreNames.contains("dashboard")) {
-        db.createObjectStore("dashboard", {
+      if (db.objectStoreNames.contains("dashboard")) {
+        db.deleteObjectStore("dashboard");
+        const objectStore = db.createObjectStore("dashboard", {
           keyPath: "id",
         });
+
+        objectStore.createIndex("nameIDX", "name", { unique: false });
+        objectStore.createIndex("nameIDX", "address", { unique: false });
       }
     };
   }, []);
@@ -62,7 +66,10 @@ function Dashboard() {
 
     const store = transaction.objectStore("dashboard");
 
-    const request = store.getAll();
+    // const request = store.getAll();
+
+    const index = store.index("nameIDX");
+    const request = index.getAll();
 
     request.onsuccess = (event) => {
       console.log("Success: ", (event.target as IDBOpenDBRequest)?.result);
