@@ -1,0 +1,51 @@
+// 75 hard tracker settings
+
+{
+  "dashboard": {},
+  "tasks_today": {},
+  "my_progress": {},
+  "gallery": {
+    "daily_photos": [],
+    "food_photos": []
+  },
+  "notifications_settings": {
+    "is_all_notifications_disabled": true,
+    "water_reminder": {
+      "is_enabled": true,
+      "notification_type": "daily", // every_half_hour || every_hour || every_two_hours || every_six_hours || every_twelve_hours || daily
+      "initial_notification_time": "08:00"
+    },
+    "outdoor_activity_reminder": {
+      "is_enabled": true,
+      "notification_type": "daily", // every_half_hour || every_hour || every_two_hours || every_six_hours || every_twelve_hours || daily
+      "initial_notification_time": "08:00"
+    },
+    "indoor_activity_reminder": {
+      "is_enabled": true,
+      "notification_type": "daily", // every_half_hour || every_hour || every_two_hours || every_six_hours || every_twelve_hours || daily
+      "initial_notification_time": "08:00"
+    },
+    "book_reading_reminder": {
+      "is_enabled": true,
+      "notification_type": "daily", // every_half_hour || every_hour || every_two_hours || every_six_hours || every_twelve_hours || daily
+      "initial_notification_time": "08:00"
+    },
+    "progress_photos_reminder": {
+      "is_enabled": true,
+      "notification_type": "daily", // every_half_hour || every_hour || every_two_hours || every_six_hours || every_twelve_hours || daily
+      "initial_notification_time": "08:00"
+    },
+    "track_progress_reminder": {
+      "is_enabled": true,
+      "notification_type": "daily", // every_half_hour || every_hour || every_two_hours || every_six_hours || every_twelve_hours || daily
+      "initial_notification_time": "08:00"
+    },
+    "body_measurement_reminder": {
+      "is_enabled": true,
+      "notification_type": "daily", // every_half_hour || every_hour || every_two_hours || every_six_hours || every_twelve_hours || daily
+      "initial_notification_time": "08:00"
+    }
+  },
+  "account": {},
+  "settings": {}
+}
