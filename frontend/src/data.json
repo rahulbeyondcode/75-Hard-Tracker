@@ -5,35 +5,47 @@
   "tasks_today": {},
   "my_progress": {},
   "gallery": {
-    "daily_photos": [],
-    "food_photos": []
+    "daily_photos": {
+      "10-02-2025": {
+        "date": "10-02-2025",
+        "time": "08:00",
+        "image": "https://via.placeholder.com/150"
+      }
+    },
+    "food_photos": {
+      "10-02-2025": {
+        "date": "10-02-2025",
+        "time": "08:00",
+        "image": "https://via.placeholder.com/150"
+      }
+    }
   },
   "notifications_settings": {
     "is_all_notifications_disabled": true,
     // every_half_hour || every_hour || every_two_hours || every_six_hours || every_twelve_hours || daily
     "water_reminder": {
       "is_enabled": true,
-      "notification_type": "daily",
+      "notification_type": "every_half_hour",
       "initial_notification_time": "08:00"
     },
     "outdoor_activity_reminder": {
       "is_enabled": true,
-      "notification_type": "daily",
+      "notification_type": "every_hour",
       "initial_notification_time": "08:00"
     },
     "indoor_activity_reminder": {
       "is_enabled": true,
-      "notification_type": "daily",
+      "notification_type": "every_two_hours",
       "initial_notification_time": "08:00"
     },
     "book_reading_reminder": {
       "is_enabled": true,
-      "notification_type": "daily",
+      "notification_type": "every_six_hours",
       "initial_notification_time": "08:00"
     },
     "progress_photos_reminder": {
       "is_enabled": true,
-      "notification_type": "daily",
+      "notification_type": "every_twelve_hours",
       "initial_notification_time": "08:00"
     },
     "track_progress_reminder": {
@@ -47,6 +59,11 @@
       "initial_notification_time": "08:00"
     }
   },
-  "account": {},
-  "settings": {}
+  "account_settings": {
+    "name": "John Doe",
+    "email": "",
+    "date_of_birth": "1999-04-11",
+    "gender": "male",
+    "profile_picture": ""
+  }
 }
