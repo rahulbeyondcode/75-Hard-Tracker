@@ -2,11 +2,37 @@
 
 {
   "dashboard": {},
-  "tasks_today": {},
-  "my_progress": {},
+  "tasks_today": {
+    "water_consumption": {
+      "is_completed": false,
+      "goal": 4,
+      "current": 0.75
+    },
+    "outdoor_activity": {
+      "is_completed": false,
+      "goal": 45,
+      "current": 0
+    },
+    "indoor_activity": {
+      "is_completed": true,
+      "goal": 45,
+      "current": 53
+    },
+    "book_reading": {
+      "is_completed": false,
+      "goal": 10,
+      "current": 3
+    },
+    "progress_photo": {
+      "is_photo_uploaded": true,
+      "image": "https://via.placeholder.com/150"
+    }
+  },
+  "overall_progress": {},
   "gallery": {
     "daily_photos": {
       "10-02-2025": {
+        "id": 1,
         "date": "10-02-2025",
         "time": "08:00",
         "image": "https://via.placeholder.com/150"
@@ -14,6 +40,7 @@
     },
     "food_photos": {
       "10-02-2025": {
+        "id": 1,
         "date": "10-02-2025",
         "time": "08:00",
         "image": "https://via.placeholder.com/150"
@@ -57,6 +84,40 @@
       "is_enabled": true,
       "notification_type": "daily",
       "initial_notification_time": "08:00"
+    }
+  },
+  "onboarding": {
+    "is_completed": true,
+    "data": {
+      "name": "John Doe",
+      "username": "johndoe",
+      "password_hash": "password",
+      "email": "as@example.com",
+      "data_of_birth": "1999-04-11",
+      "diet_foods_agreed": [
+        { "id": 1, "name": "Vegetables" },
+        { "id": 2, "name": "Fruits" },
+        { "id": 3, "name": "Nuts" },
+        { "id": 4, "name": "Seeds" },
+        { "id": 5, "name": "Whole grains" },
+        { "id": 6, "name": "Fish" },
+        { "id": 7, "name": "Eggs" },
+        { "id": 8, "name": "Poultry" },
+        { "id": 9, "name": "Legumes" },
+        { "id": 10, "name": "Dairy" },
+        { "id": 11, "name": "Herbs" },
+        { "id": 12, "name": "Spices" },
+        { "id": 13, "name": "Healthy fats" }
+      ],
+      "weight": 70,
+      "height": 170,
+      "gender": "male",
+      "hips": 90,
+      "chest": 90,
+      "waist": 80,
+      "arms": 30,
+      "thighs": 40,
+      "neck": 30
     }
   },
   "account_settings": {
